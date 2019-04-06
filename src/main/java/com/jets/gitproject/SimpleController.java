@@ -65,10 +65,26 @@ public class SimpleController extends Application {
 
 		return newStudent;
 	}
-public Student getLastStudent()
+	public Student getLastStudent()
 	{
-}
+		Student newStudent = null;
+		try {
+			// move to first record
+			if (resultSet.last()) {
+				newStudent = new Student();
+				newStudent.setId(resultSet.getInt(1));
+				newStudent.setFirstName(resultSet.getString(2));
+				newStudent.setMiddleName(resultSet.getString(3));
+				newStudent.setLastName(resultSet.getString(4));
+				newStudent.setEmail(resultSet.getString(5));
+				newStudent.setPhone(resultSet.getString(6));
+			}
+		} catch (SQLException e) {
+			System.out.println("Failed to get first element : " + e.getMessage());
+		}
 
+		return newStudent;
+	}
 	public Student getPreviousStudent()
 	{
 }
