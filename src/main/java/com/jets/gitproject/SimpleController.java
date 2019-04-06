@@ -157,6 +157,21 @@ public class SimpleController extends Application {
 
 	public void addNewStudent(Student studentData)
 	{
-}
+		try {
+			// first move to new row
+			resultSet.moveToInsertRow();
+			// gathering info from user and update columns of new row
+			resultSet.updateInt(1, studentData.getId());
+			resultSet.updateString(2, studentData.getFirstName());
+			resultSet.updateString(3, studentData.getMiddleName());
+			resultSet.updateString(4, studentData.getLastName());
+			resultSet.updateString(5, studentData.getEmail());
+			resultSet.updateString(6, studentData.getPhone());
+			// invoke insertRow to make changes to resultset and database
+			resultSet.insertRow();
+		} catch (Exception e) {
+			System.out.println("Failed to insert new row : " + e.getMessage());
+		}
+	}
 
 }
