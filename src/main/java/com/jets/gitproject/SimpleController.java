@@ -147,7 +147,13 @@ public class SimpleController extends Application {
 
 	public void deleteStudent(Student studentData)
 	{
-}
+		try {
+			// delete cursor current row
+			resultSet.deleteRow();
+		} catch (SQLException e) {
+			System.out.println("Failed to delete current row : " + e.getMessage());
+		}
+	}
 
 	public void addNewStudent(Student studentData)
 	{
