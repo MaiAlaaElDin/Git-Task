@@ -339,5 +339,14 @@ public class SimpleUI extends BorderPane {
 	//User actions
 	public void initEvents()
 	{
+		b_first.setOnAction(e -> {
+			Student student = controller.getFirstStudent();
+			if (student != null) 
+				updateUI(student);
+		});
+		
+		
+
+
 	}
 }
