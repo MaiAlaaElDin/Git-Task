@@ -309,11 +309,31 @@ public class SimpleUI extends BorderPane {
 	//Write to UI
 	private void updateUI(Student student)
 	{
+		t_ID.setText(String.valueOf(student.getId()));
+		t_Phone.setText(student.getPhone());
+		t_FN.setText(student.getFirstName());
+		t_MN.setText(student.getMiddleName());
+		t_LN.setText(student.getLastName());
+		t_Email.setText(student.getEmail());
 	}
 	
 	//Read from UI
 	private Student getStudentData() 
 	{
+		Student student = new Student();
+		try {
+			int id = Integer.parseInt(t_ID.getText());
+			student.setId(id);
+			student.setEmail(t_Email.getText());
+			student.setFirstName(t_FN.getText());
+			student.setLastName(t_LN.getText());
+			student.setMiddleName(t_MN.getText());
+			student.setPhone(t_Phone.getText());
+		}catch (NumberFormatException e) {
+			System.out.println("ID is invalid !");
+		}
+		
+		return student;
 	}
 	
 	//User actions
