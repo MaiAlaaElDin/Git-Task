@@ -1,5 +1,16 @@
 package com.jets.gitproject;
 
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
+
 public class SimpleUI extends BorderPane {
 
      // Mai work
@@ -301,9 +312,82 @@ public class SimpleUI extends BorderPane {
 		flowPane.getChildren().add(b_last);
 		stackPane.getChildren().add(label5);
 
+		
+		initEvents();
+
 	}
 
 
 
      // Elhosany work
+	//Write to UI
+	private void updateUI(Student student)
+	{
+		t_ID.setText(String.valueOf(student.getId()));
+		t_Phone.setText(student.getPhone());
+		t_FN.setText(student.getFirstName());
+		t_MN.setText(student.getMiddleName());
+		t_LN.setText(student.getLastName());
+		t_Email.setText(student.getEmail());
+	}
+	
+	//Read from UI
+	private Student getStudentData() 
+	{
+		Student student = new Student();
+		try {
+			int id = Integer.parseInt(t_ID.getText());
+			student.setId(id);
+			student.setEmail(t_Email.getText());
+			student.setFirstName(t_FN.getText());
+			student.setLastName(t_LN.getText());
+			student.setMiddleName(t_MN.getText());
+			student.setPhone(t_Phone.getText());
+		}catch (NumberFormatException e) {
+			System.out.println("ID is invalid !");
+		}
+		
+		return student;
+	}
+	
+	//User actions
+	public void initEvents()
+	{
+		b_first.setOnAction(e -> {
+			Student student = controller.getFirstStudent();
+			if (student != null) 
+				updateUI(student);
+		});
+		
+		b_last.setOnAction(e -> {
+			Student student = controller.getLastStudent();
+			if (student != null) 
+				updateUI(student);
+		});
+
+		b_next.setOnAction(e -> {
+			Student student = controller.getNextStudent();
+			if (student != null) 
+				updateUI(student);
+		});
+		b_prev.setOnAction(e -> {
+			Student student = controller.getPreviousStudent();
+			if (student != null) 
+				updateUI(student);
+		});
+
+		b_update.setOnAction(e -> {
+			controller.updateStudent(getStudentData());
+		});
+
+		b_delete.setOnAction(e->{
+			controller.deleteStudent(getStudentData());
+		});
+
+		b_new.setOnAction(e->{
+			controller.addNewStudent(getStudentData());
+		});
+
+
+	}
 }
