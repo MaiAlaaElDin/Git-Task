@@ -44,4 +44,30 @@ public class SimpleController extends Application {
 		}
 		return resultSet;
 	}
+// User methods
+	public Student getFirstStudent()
+	{
+	}
+public Student getLastStudent()
+	{
+}
+
+	public Student getPreviousStudent()
+	{
+}
+
+	public Student getNextStudent()
+	{
+public void updateStudent(Student studentData)
+	{
+}
+
+	public void deleteStudent(Student studentData)
+	{
+}
+
+	public void addNewStudent(Student studentData)
+	{
+}
+
 }
