@@ -366,6 +366,10 @@ public class SimpleUI extends BorderPane {
 			controller.updateStudent(getStudentData());
 		});
 
+		b_delete.setOnAction(e->{
+			controller.deleteStudent(getStudentData());
+		});
+
 
 	}
 }
