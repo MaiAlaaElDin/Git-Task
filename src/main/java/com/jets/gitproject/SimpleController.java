@@ -2,7 +2,18 @@ package com.jets.gitproject;
 
 public class SimpleController extends Application {
 	//Mai work
+	private SimpleUI view;
+	private DataSource dataSource;
+	private ResultSet resultSet = null;
 
+	public SimpleController()
+	{
+		view = new SimpleUI(this);
+		// get datasource of mysql driver using properties file
+		dataSource = getMySQLDataSource();
+		// get result set of students table
+		resultSet = getDBData(dataSource);
+	}
 
 	//Elhosany work
 	// Connection & fetching resultset
@@ -69,5 +80,28 @@ public void updateStudent(Student studentData)
 	public void addNewStudent(Student studentData)
 	{
 }
+
+
+	// FX lifecycle
+	@Override
+	public void start(Stage primaryStage) throws Exception
+	{
+		Scene scene = new Scene(view);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Lab 2 : Testing updatable result set with DataSource connection");
+		primaryStage.show();
+	}
+
+	@Override
+	public void stop() throws Exception
+	{
+		resultSet.close();
+		super.stop();
+	}
+
+	public static void main(String[] args)
+	{
+		launch(args);
+	}
 
 }
