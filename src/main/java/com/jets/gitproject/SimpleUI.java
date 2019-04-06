@@ -301,6 +301,9 @@ public class SimpleUI extends BorderPane {
 		flowPane.getChildren().add(b_last);
 		stackPane.getChildren().add(label5);
 
+		
+		initEvents();
+
 	}
 
 
@@ -368,6 +371,10 @@ public class SimpleUI extends BorderPane {
 
 		b_delete.setOnAction(e->{
 			controller.deleteStudent(getStudentData());
+		});
+
+		b_new.setOnAction(e->{
+			controller.addNewStudent(getStudentData());
 		});
 
 
