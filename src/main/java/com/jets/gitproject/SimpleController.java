@@ -127,9 +127,23 @@ public class SimpleController extends Application {
 		return newStudent;
 	}
 
-public void updateStudent(Student studentData)
+	public void updateStudent(Student studentData)
 	{
-}
+		try {
+			resultSet.updateInt(1, studentData.getId());
+			resultSet.updateString(2, studentData.getFirstName());
+			resultSet.updateString(3, studentData.getMiddleName());
+			resultSet.updateString(4, studentData.getLastName());
+			resultSet.updateString(5, studentData.getEmail());
+			resultSet.updateString(6, studentData.getPhone());
+
+			// must call update row to reflect update to database
+			resultSet.updateRow();
+
+		} catch (Exception e) {
+			System.out.println("Failed to update student the reason is : " + e.getMessage());
+		}
+	}
 
 	public void deleteStudent(Student studentData)
 	{
