@@ -8,4 +8,18 @@ public class SimpleUI extends BorderPane {
 
 
      // Elhosany work
+	//Write to UI
+	private void updateUI(Student student)
+	{
+	}
+	
+	//Read from UI
+	private Student getStudentData() 
+	{
+	}
+	
+	//User actions
+	public void initEvents()
+	{
+	}
 }
